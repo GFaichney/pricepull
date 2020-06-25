@@ -3,7 +3,7 @@ const config = require('./config.js');
 let fundlist = async workbook => {
 
   const worksheet = workbook.getWorksheet(config.sheetname);
-  const fundColumn = worksheet.getColumn(config.column);
+  const fundColumn = worksheet.getColumn(config.fundCodeCol);
 
   const fundList = [];
   fundColumn.eachCell((cell, rowNumber) => {

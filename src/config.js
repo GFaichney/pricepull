@@ -1,10 +1,25 @@
 let config = {
+  filename: './data_src/ftse250.xlsx',
+  outprefix: './data_out/data',
   sheetname: 'Sheet1',
-  column: 'B',
-  fundCodeCol: 'C',
+  fundCodeCol: 'A',
+  output: {
+    multiplyToPence: 'uClose,uOpen,uHigh,uLow',
+    uClose: 'C',
+    uOpen: 'D',
+    uHigh: 'E',
+    uLow: 'F',
+    uVolume: 'G',
+    date: 'H'
+  },
+  pricePullDelay: 0.7,
   firstRow: 2,
-  apiKey: '',
-  endOfDayCol: 'G'
+  iex: {
+    apiKey: `${process.env.IEX_KEY}`
+  }
 };
+
+
+
 
 module.exports = config;

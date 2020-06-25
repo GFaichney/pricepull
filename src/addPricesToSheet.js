@@ -20,9 +20,17 @@ const addPricesToSheet = async (fundList, workbook) => {
       const fundCode = cell.text;
       const newPrice = fundMap[fundCode];
       if(newPrice){
-        console.log(`Found new price for ${fundCode} : ${newPrice.price}`);
-        const updCell = await worksheet.getCell(`${config.endOfDayCol}${rowNumber}`);
-        updCell.value = newPrice.price;
+
+        Object.keys(newPrice.data).forEach(async val => {
+          if(config.output[val]){
+            const updCell = await worksheet.getCell(`${config.output[val]}${rowNumber}`);
+            if(config.output.multiplyToPence.includes(val)){
+              updCell.value = newPrice.data[val] * 100;
+            } else {
+              updCell.value = newPrice.data[val];
+            }
+          }
+        });
       }
     }
   });

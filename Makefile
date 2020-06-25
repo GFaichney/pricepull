@@ -5,4 +5,7 @@ setup:
 	open -W _install/node.pkg
 	npm i
 
+webserve:
+	npx http-server data_out
+
 

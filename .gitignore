@@ -1,3 +1,4 @@
 node_modules
 *.swp
 _install/
+data_out/*
